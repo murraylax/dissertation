@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{-.2in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.2in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1.6}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} (\citeyear{#1})}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{singlespace}
+\noindent Three Essays in Adaptive Expectations in New Keynesian Monetary Economies.\\
+James Murray\\
+Dissertation Proposal\\
+\end{singlespace}
+
+These three dissertation papers all examine what features of U.S. data adaptive expectations can explain in the context of a standard New Keynesian monetary model.  In the first paper I examine the differences in estimated models when using rational expectations and when using constant gain least squares learning.  Constant gain learning is a type of adaptive expectations framework where dynamics from learning persist in the long run.  It can be shown that constant gain learning may lead to persistence in macroeconomic data, may lead to prolonged episodes of inflation, and may lead to time varying macroeconomic volatility.  All of these are features of U.S. data that traditional rational expectations models have difficulty explaining.  I take the model with learning to the data to determine if learning is able to adequately explain these things.  The finding is that, while in theory learning can deliver these features, in reality the predictions from the learning model are not very different than rational expectations.
+
+The results from the first paper indicate that learning alone cannot deliver adequate explanations for the puzzles in U.S. data.  The constant gain model was particularly poor in explaining time-varying volatility in inflation and output.  In the second paper I examine the consequences of structural changes in volatility when combined with changes in the learning mechanism.  The purpose is to determine if structural change and learning changes are observationally equivalent, and if not, identify how much changes in volatility come from each of these sources. 
+
+Rational expectations is the limiting case for a number of adaptive expectations frameworks including the least squares learning mechanism examined in the first two papers.  There is little agreement as to what type of adaptive expectations is most appropriate.  The final paper estimates the same New Keynesian model using other types of adaptive expectations mechanisms such as long-horizon least squares learning, Bayesian learning, and rational inattention.  The purpose is to determine what features of the data these different frameworks can explain, and to determine differences in the predictions of these expectations assumptions.
+\end{document}
+
+
+

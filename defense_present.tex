@@ -1,0 +1,892 @@
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{verbatim}
+
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{pgf}
+\usepackage{colortbl}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+
+\newcommand{\ft}[1]{
+  \frametitle{\begin{tabular}{p{4.2in}r} \textcolor{white}{#1} & \small{\insertframenumber / \inserttotalframenumber} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\stepinv}{\setbeamercovered{invisible}}
+\newcommand{\stopinv}{\setbeamercovered{transparent=18}}
+\newcommand{\uncoverinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{#1}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\ans}[1]{\textcolor{blue}{#1}}
+\newcommand{\ansinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{\textcolor{blue}{#1}}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\setinv}{\setbeamercovered{invisible}}
+\newcommand{\setvis}{\setbeamercovered{transparent=18}}
+\newcommand{\centerpic}[2]
+{
+  \begin{center}
+  \includegraphics[#1]{#2}
+  \end{center}
+}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+%\definecolor{light}{rgb}{1.0,0.33,0.33}
+\definecolor{light}{rgb}{1.0,0.5,0.5}
+\newcommand{\hl}[1]{\alt<#1>{\rowcolor{light}\hspace*{-2.1pt}} {\hspace*{-2.1pt}} }
+
+\definecolor{mycolor}{rgb}{0.6,0.0,0.0}
+\usecolortheme[named=mycolor]{structure}
+
+\title[Adaptive Expectations in New Keynesian Economies]{Three Essays in Adaptive Expectations in New Keynesian Monetary Economies}
+\author[Dissertation Defense. Indiana University. July 2008.]{James Murray\\Dissertation Defense\\Indiana University}
+\date{July 8, 2008}
+
+\begin{document}
+
+\frame{\titlepage}
+\setcounter{framenumber}{0}
+
+%% \section{}
+
+\frame{
+  \ft{Three Essays}
+  \be
+  \item Initial Expectations in New Keynesian Models with Learning
+  \item Empirical Significance of Learning in a New Keynesian Model with Firm-Specific Capital
+  \item Regime Switching, Learning, and the Great Moderation
+  \ee
+}
+
+\frame {
+  \ft{Purpose}
+  How does least squares learning affect our understanding of post-war U.S. data?
+  \bi
+  \item<+-> Does it explain prolonged inflation? 
+    \bi \item<.-> Orphanides and Williams (2005a) \ei
+  \item<+-> Does it explain time-varying volatility?  Great Moderation? 
+    \bi 
+    \item<.-> Primiceri (QJE, 2005)
+    \item<.-> Orphanides and Williams (JEDC, 2005b) 
+    \item<.-> Milani (2007)
+    \ei
+  \item<+-> How does learning influence the impact of structural shocks?
+  \item<+-> How do initial expectations and agents' information sets influence these results?
+  \item<+-> Can dynamic gain learning explain time-varying volatility?
+  \ei
+}
+
+%% \section{Paper 1: Initial Expectations in New Keynesian Models}
+
+%% \subsection{}
+\frame {
+  \ft{Essay 1 Outline}
+  Initial Expectations in New Keynesian Models with Learning
+  \bi
+  \item<+-> Examine constant gain learning in a standard New Keynesian model.
+    \bi
+    \item<.-> No capital, output used for consumption.
+    \item<.-> Habit formation.
+    \item<.-> Calvo (JME 1983) sticky prices.
+    \item<.-> Inflation indexation.
+    \item<.-> Taylor rule responds to expectations.
+    \ei
+  \item<+-> How do initial expectations and assumptions for information sets influence results on...
+    \bi
+    \item<.-> parameter estimates?
+    \item<.-> impact of structural shocks?
+    \item<.-> forecast errors?
+    \ei
+  \ei
+}
+
+%% \subsection{Four Expectations Frameworks}
+\frame {
+  \ft{Four Expectations Frameworks}
+  \bi
+  \item<+-> Case 1: Rational Expectations.
+    \bi \item<.-> Agents observe structural shocks (natural rate shock, cost push shock). \ei
+  \item<+-> Case 2: Constant gain least squares learning.  
+    \bi
+    \item<.-> Agents observe structural shocks.
+    \item<.-> Expectations initialized to rational expectations solution.
+    \ei
+  \item<+-> Case 3: Constant gain learning with a limited information set.
+    \bi
+    \item<.-> Shocks are not observable, not used as explanatory variables.
+    \item<.-> Expectations on remaining variables set equal to rational expectations solution.
+    \ei
+  \item<+-> Case 4: Constant gain learning with pre-sample initial expectations.
+    \bi
+    \item<.-> Shocks are not observable, not used as explanatory variables.
+    \item<.-> Initial conditions set to pre-sample (1954:Q3-1959:Q4) WLS results.
+    \ei
+  \ei
+}
+
+\frame {
+  \ft{Estimation Procedure}
+  \bi
+  \item<+-> Maximum Likelihood
+  \item<+-> Calibrated parameters:
+    \bi
+    \item<.-> Discount factor: $\beta=0.9925$
+    \item<.-> Steady state inflation: $\pi^* = 3.52$
+    \item<.-> Phillips coefficient: $\kappa=0.1$
+    \ei
+  \ei
+}
+
+%% \subsection{Parameter Estimates}
+\frame {
+  \ft{Parameter Estimates}
+\tiny
+\begin{center}
+\begin{tabular}{ll|c|c|c|c} \hline
+\multicolumn{2}{c|}{Parameter} & Case 1 & Case 2 & Case 3 & Case 4 \\ \hline 
+$\eta$ & Habit Persistence & 0.9929 (0.0892) & 0.6515 (0.0174) & 0.9577 (0.4132) & 0.7065 (0.2465) \\  
+\hl{3}
+$\sigma^{-1}$ & Inverse IES & 0.0015 (0.0281) & 0.4162 (0.0536) & 0.0308 (0.5686) & 0.2457 (0.4541) \\  
+\hl{4}
+$\gamma$ & Price Indexation & 0.0000 (0.0377) & 0.7126 (0.0238) & 0.9994 (0.0754) & 0.6322 (0.1325) \\  
+$\rho_r$ & MP Persistence & 0.8857 (0.0195) & 0.7843 (0.0030) & 0.8558 (0.0208) & 0.7043 (0.0391) \\  
+\hl{3}
+$\psi_y$ & MP Output Gap & 0.3864 (0.1228) & 0.0758 (0.0163) & 0.1434 (0.0320) & 0.2265 (0.0451) \\  
+\hl{3}
+$\psi_\pi$ & MP Inflation & 3.6813 (0.6479) & 1.7419 (0.0343) & 2.2153 (0.2974) & 1.5009 (0.0942) \\  
+$\rho_{n}$ & Natural Rate Pers. & 0.3636 (0.0381) & 0.7699 (0.0045) & 0.3060 (0.0406) & 0.5102 (0.0434) \\  
+$\rho_{u}$ & Cost Push Pers. & 0.8568 (0.0155) & 0.2398 (0.0366) & 0.0000 (0.0438) & 0.2880 (0.0684) \\  
+$\sigma_{n}$ & Natural Rate Std. Dev. & 0.0635 (0.0128) & 0.0055 (0.0000) & 0.2173 (0.0584) & 0.0328 (0.0112) \\  
+$\sigma_{u}$ & Cost Push Std. Dev. & 0.0021 (0.0001) & 0.0066 (0.0003) & 0.0122 (0.0005) & 0.0100 (0.0008) \\  
+$\sigma_{r}$ & Policy Shock Std. Dev. & 0.0032 (0.0001) & 0.0031 (0.0001) & 0.0030 (0.0000) & 0.0031 (0.0001) \\  
+$\pi^{*}$ & Steady State Inflation & 3.5304 (0.2017) & 3.2369 (0.3026) & 4.5971 (0.4958) & 4.0443 (0.3728) \\  
+\hl{2}
+$g$ & Learning Gain & -- & 0.0119 (0.0015) & 0.0202 (0.0020) & 0.0175 (0.0027) \\ \hline 
+\end{tabular}
+\end{center}
+\normalsize
+\only<1>{\vspace*{2.1pc}}
+\only<2>{\textcolor{mycolor}{Learning gain is statistically significant.}\vspace*{1.1pc}}
+\only<3>{\textcolor{mycolor}{Learning predicts consumption and monetary policy decisions are less responsive to expectations}}
+\only<4>{\textcolor{mycolor}{Learning models predict significant inflation persistence.}\vspace*{1.1pc}}
+}
+
+%% \subsection{Structural Shocks}
+
+\frame {
+  \ft{Impulse Response Functions}
+  \bi
+  \item<+-> Does learning influence the impact a structural shock has on the economy?
+  \item<+-> Minimal impact from learning occurs when expectations are at the RE steady state.
+  \item<+-> Absent of shocks, state variables still evolve when expectations are away from their steady state.
+  \item<+-> Methodology:
+    \bi
+    \item<.-> Take expectations at time 2008:Q4.
+    \item<.-> Simulate data with a one standard deviation shock to natural interest rate.
+    \item<.-> Simulate data absent of any shocks.
+    \item<.-> Take the difference.
+    \ei
+  \ei
+}
+
+\frame {
+  \ft{IRF: Natural Rate Shock on Output}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../initexp/results/results_re/Output_natshock_irf.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_reallinit/Output_natshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../initexp/results/results_reinit/Output_natshock_irf.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_wlsinit/Output_natshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+
+\frame {
+  \ft{IRF: Natural Rate Shock on Inflation}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../initexp/results/results_re/Inflation_natshock_irf.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_reallinit/Inflation_natshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../initexp/results/results_reinit/Inflation_natshock_irf.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_wlsinit/Inflation_natshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+
+\frame {
+  \ft{Case 2: Natural Rate Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_reallinit/Output_natshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 3: Natural Rate Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_reinit/Output_natshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Natural Rate Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_wlsinit/Output_natshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 2: Natural Rate Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_reallinit/Inflation_natshock_irf3d.png} 
+}
+\frame {
+  \ft{Case 3: Natural Rate Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_reinit/Inflation_natshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Natural Rate Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../initexp/results/results_wlsinit/Inflation_natshock_irf3d.png} 
+}
+
+%% \subsection{Forecast Errors}
+\frame {
+  \ft{Forecast Errors: Output Gap}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.98) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_re/output_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_reallinit/output_err.png} \\ \\
+  Case 3 (0.97) & Case 4 (0.92) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_reinit/output_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_wlsinit/output_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors
+  \item Most volatile during recessions in 1970s, early 1980s
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame {
+  \ft{Forecast Errors: Inflation}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.93) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_re/inflation_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_reallinit/inflation_err.png} \\ \\
+  Case 3 (0.90) & Case 4 (0.89) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_reinit/inflation_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_wlsinit/inflation_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors
+  \item Largest errors during recessions in 1970s, early 1980s
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame {
+  \ft{Forecast Errors: Federal Funds Rate}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.95) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_re/fedfunds_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_reallinit/fedfunds_err.png} \\ \\
+  Case 3 (0.95) & Case 4 (0.91) \\
+  \includegraphics[scale=0.2]{../initexp/results/results_reinit/fedfunds_err.png} &
+  \includegraphics[scale=0.2]{../initexp/results/results_wlsinit/fedfunds_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors
+  \item Learning \textit{does not explain} change in policy beginning 1979/1980.
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame{
+  \ft{Conclusions}
+  \bi
+  \item<+-> Learning gain is statistically significant.
+  \item<+-> Incorporating learning leads to parameter estimates that imply less sensitivity to expectations.
+  \item<+-> Largest errors for every specification still occur during 1970s and early 1980s.
+  \item<+-> Learning + Limited information sets leads to prolonged and oscillatory impulse responses. 
+  \item<+-> 3D Impulse Responses show the United States was more sensitive to shocks following recessions in 1970s, early 1980s, and now.
+  \ei
+}
+
+%% \section{Paper 2: Empirical Significance of Learning with Firm-Specific Capital}
+
+\frame {
+  \ft{Essay 2 Outline}
+  Empirical Significance of Learning in a New Keynesian Model with Firm-Specific Capital
+  \bi
+  \item<+-> Examine constant gain learning in a New Keynesian model with Firm-Specific capital.
+    \bi
+    \item<.-> Output used for consumption and investment in capital.
+    \item<.-> Habit formation.
+    \item<.-> Calvo (1983) sticky prices.
+    \item<.-> Inflation indexation.
+    \item<.-> Taylor rule responds to expectations.
+    \ei
+  \item<+-> How do initial expectations and assumptions for information sets influence results on...
+    \bi
+    \item<.-> parameter estimates?
+    \item<.-> impact of structural shocks?
+    \item<.-> forecast errors?
+    \ei
+  \item<+-> Look at the same four cases for initial conditions and agents' information sets.
+  \ei
+}
+
+\frame {
+  \ft{Data}
+  \bi
+  \item<+-> Pre-sample period: 1953:Q3 - 1969:Q4, Sample period: 1970:Q1-2008:Q1
+  \item<+-> Data:
+    \bi
+    \item<.-> Real consumption per capita
+    \item<.-> Real gross private domestic investment per capita
+    \item<.-> CPI inflation
+    \item<.-> Federal Funds rate
+    \ei
+  \item<+-> Consumption and Investment is de-trended:
+    \uncover<.->{\bdm CONS_t^* = \frac{CONS_t}{(1+g_y)^t},~~~ INV_t^* = \frac{INV_t}{(1+g_y)^t}\edm}
+    \bi
+    \item<.->$g_y \equiv$ average quarterly growth rate of $CONS_t + INV_t$.
+    \ei
+  \ei
+}
+
+\frame{
+  \ft{Estimation Procedure}
+  \bi
+  \item<+-> Maximum Likelihood
+  \item<+-> Calibrate parameters:
+    \bi
+    \item<.-> Discount factor $\beta=0.9925$.
+    \item<.-> Steady state inflation $\pi^*=3.52$.
+    \item<.-> Depreciation rate $\delta=0.025$.
+    \item<.-> Steady state level of (de-trended) output set equal to average.
+    \item<.-> Phillips curve slope $\kappa=0.1$.
+    \item<.-> Capital share of income $\alpha=0.24$.
+    \ei
+  \ei
+}
+
+\frame {
+  \ft{Parameter Estimates}
+\tiny
+\begin{center}
+\begin{tabular}{ll|c|c|c|c} \hline
+ & Parameter & Case 1 & Case 2 & Case 3 & Case 4 \\ \hline  
+$\eta$ & Habit Persistence & 0.1060 (0.0272) & 0.1289 (0.0399) & 0.1224 (0.0264) & 0.2728 (0.0232) \\  
+\hl{3}
+$\sigma$ & IES & 0.1603 (0.0342) & 0.0513 (0.0072) & 0.0157 (0.0001) & 0.1220 (0.0175)\\  
+\hl{4}
+$\mu$ & Inverse Elas. Labor & 30.6713 (8.9559) & 0.0499 (0.0771) & 2.0877 (0.4286) & 0.3324 (0.2817) \\  
+$c_y$ & C/Y Ratio & 0.8339 (0.0038) & 0.8672 (0.0024) & 0.8361 (0.0000) & 0.8289 (0.0028) \\  
+\hl{5}
+$\phi$ & Capital Adj. Cost & 7.6832 (1.4003) & 24.8826 (1.4036) & 26.8332 (4.1201) & 26.9755 (1.7912) \\  
+$\gamma$ & Price Indexation & 0.3624 (0.1929) & 0.0000 (0.0349) & 0.5236 (0.0852) & 0.6090 (0.1214) \\  
+$\rho_r$ & MP Persistence & 0.1945 (0.0497) & 0.6592 (0.0141) & 0.7250 (0.0280) & 0.0956 (0.1061) \\  
+$\psi_y$ & MP Output & 0.0000 (0.0172) & 0.0576 (0.0090) & 0.0458 (0.0092) & 0.0041 (0.0131) \\  
+$\psi_\pi$ & MP Inflation & 2.1212 (0.1893) & 1.4448 (0.0658) & 1.7735 (0.1278) & 1.8491 (0.0974) \\  
+$\rho_{\xi}$ & Pref. Shock Pers. & 0.9826 (0.0069) & 0.9925 (0.0040) & 0.9636 (0.0070) & 1.0000 (0.0000) \\  
+$\rho_{z}$ & Tech. Shock Pers. & 0.9668 (0.0058) & 0.6741 (0.0254) & 0.9638 (0.0193) & 0.9506 (0.0121) \\  
+$\rho_{\iota}$ & Inv. Shock Pers. & 0.9060 (0.0151) & 0.9301 (0.0084) & 0.9297 (0.0103) & 0.9234 (0.0173) \\  
+$\sigma_{\xi}$ & Pref. Shock Std. Dev. & 0.0926 (0.0252) & 0.1647 (0.0211) & 0.6165 (0.0511) & 0.6879 (0.0446) \\  
+$\sigma_{z}$ & Tech. Shock Std. Dev. & 0.0104 (0.0003) & 0.0199 (0.0018) & 0.0294 (0.0037) & 0.0730 (0.0191) \\  
+$\sigma_{\iota}$ & Inv. Shock Std. Dev. & 0.0206 (0.0021) & 0.1130 (0.0149) & 0.0387 (0.0016) & 0.0683 (0.0069) \\  
+$\sigma_{r}$ & MP Shock Std. Dev. & 0.0027 (0.0003) & 0.0032 (0.0001) & 0.0036 (0.0001) & 0.0053 (0.0003) \\  
+\hl{2}
+$g$ & Learning Gain & --  & 0.0240 (0.0043) & 0.0236 (0.0026) & 0.0381 (0.0038) \\ \hline 
+\end{tabular}
+\end{center}
+\normalsize
+\only<1>{\vspace*{3.1pc}}
+\only<2>{\textcolor{mycolor}{Learning gain is statistically significant.}\vspace*{2.1pc}}
+\only<3>{\textcolor{mycolor}{Learning predicts that consumption decisions are less responsive to changes in expectations.}\vspace*{1.1pc}}
+\only<4>{\textcolor{mycolor}{Learning predicts much more elastic labor supply, indicating investment decisions less responsive to expectations of future output and capital.}}
+\only<5>{\textcolor{mycolor}{Learning predicts larger capital adjustment cost, indicating investment decisions less responsive to expectations of future output and capital.}}
+}
+
+%% \subsection{Structural Shocks}
+\begin{comment}
+\frame {
+  \ft{IRF: Technology Shock on Consumption}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/Consumption_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/Consumption_techshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/Consumption_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/Consumption_techshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+
+\frame {
+  \ft{IRF: Technology Shock on Investment}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/Investment_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/Investment_techshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/Investment_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/Investment_techshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+\end{comment}
+
+\frame {
+  \ft{IRF: Technology Shock on Output}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/Output_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/Output_techshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/Output_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/Output_techshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+
+\frame {
+  \ft{IRF: Technology Shock on Inflation}
+  \begin{center}
+  \begin{tabular}{cc}
+  Case 1 & Case 2  \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/Inflation_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/Inflation_techshock_irf.png} \\ \\
+  Case 3 & Case 4 \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/Inflation_techshock_irf.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/Inflation_techshock_irf.png} \\
+  \end{tabular}
+  \end{center}
+}
+
+\begin{comment}
+\frame {
+  \ft{Case 2: Technology Shock on Consumption}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reallinit/Consumption_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 3: Technology Shock on Consumption}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reinit/Consumption_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Technology Shock on Consumption}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_wlsinit/Consumption_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 2: Technology Shock on Investment}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reallinit/Investment_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 3: Technology Shock on Investment}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reinit/Investment_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Technology Shock on Investment}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_wlsinit/Investment_techshock_irf3d.png} 
+}
+\end{comment}
+
+\frame {
+  \ft{Case 2: Technology Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reallinit/Output_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 3: Technology Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reinit/Output_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Technology Shock on Output}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_wlsinit/Output_techshock_irf3d.png} 
+}
+\frame {
+  \ft{Case 2: Technology Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reallinit/Inflation_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 3: Technology Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_reinit/Inflation_techshock_irf3d.png} 
+}
+
+\frame {
+  \ft{Case 4: Technology Shock on Inflation}
+  \hspace*{-0.35in}
+  \includegraphics[scale=0.4]{../capital/results/results_wlsinit/Inflation_techshock_irf3d.png} 
+}
+
+%% \subsection{Forecast Errors}
+\frame {
+  \ft{Forecast Errors: Consumption}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.95) \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/consumption_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/consumption_err.png} \\ \\
+  Case 3 (0.99) & Case 4 (0.70) \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/consumption_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/consumption_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors
+  \item Largest errors during recessions in 1970s, early 1980s
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame {
+  \ft{Forecast Errors: Investment}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.85) \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/investment_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/investment_err.png} \\ \\
+  Case 3 (0.86) & Case 4 (0.48) \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/investment_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/investment_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item Models with RE initial expectations make similar errors
+  \item Large errors before 1985.
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame {
+  \ft{Forecast Errors: Inflation}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.92) \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/inflation_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/inflation_err.png} \\ \\
+  Case 3 (0.65) & Case 4 (0.65) \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/inflation_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/inflation_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item Models with limited information somewhat less correlated with RE.
+  \item Largest errors during mid-1970s and early 1980s recessions, and today.
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+\frame {
+  \ft{Forecast Errors: Federal Funds Rate}
+  \begin{columns}
+  \begin{column}{3in}
+  \begin{tabular}{cc}
+  Case 1 (1.0) & Case 2 (0.95) \\
+  \includegraphics[scale=0.2]{../capital/results/results_re/fedfunds_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_reallinit/fedfunds_err.png} \\ \\
+  Case 3 (0.95) & Case 4 (0.69) \\
+  \includegraphics[scale=0.2]{../capital/results/results_reinit/fedfunds_err.png} &
+  \includegraphics[scale=0.2]{../capital/results/results_wlsinit/fedfunds_err.png} \\
+  \end{tabular}
+  \end{column}
+
+  \begin{column}{1.8in}
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models fail to account for change in policy at beginning of Paul Volcker period. 
+  \ei
+  \end{column}
+  \end{columns}
+}
+
+
+\frame {
+  \ft{Conclusions}
+  \bi
+  \item<+-> Learning gain is statistically significant.
+  \item<+-> Incorporating learning leads to parameter estimates that imply less sensitivity to expectations.
+  \item<+-> Not presented: learning models do not significantly out-perform rational expectations in in-sample and out-of-sample forecast error measures.
+  \item<+-> Initial conditions and agents' information sets have significant impacts on predicted impulse responses. 
+  \item<+-> 3D Impulse Responses show the United States was more sensitive to shocks during mid-1980s, early 1990s, and especially today.
+  \ei
+}
+
+%% \section{Paper 3: Regime Switching, Learning, and Great Moderation}
+
+\frame {
+  \ft{Essay 3}
+  Regime Switching, Learning, and Great Moderation
+  \bi
+  \item<+-> Three equation New Keynesian model (same as Essay 1)
+  \item<+-> Examine whether dynamic gain learning [Marcet and Nicolini (AER 2003)] can explain time-varying volatility.
+    \bi
+    \item<+-> Agents start using decreasing learning gain consistent with OLS.
+    \item<+-> Agents switch to a high learning if recent forecast errors become larger than historical average.
+    \item<+-> Milani (2007) finds evidence this creates ARCH effects.
+    \ei
+  \item<+-> Regime-switching volatility. 
+  \ei
+}
+
+\frame {
+  \ft{Dynamic gain learning}
+  \bi
+  \item<+-> Learning process:
+  \uncover<+->{\bdm \hat{G}_t^* = \hat{G}_{t-1}^* + g_t (x_{t-1} - \hat{G}_{t-1}^* x_{t-2}^*) {x_{t-2}^*}' R_t^{-1} \edm} 
+  \uncover<.->{\bdm R_t = R_{t-1} + g_t (x_{t-2}^* {x_{t-2}^*}' - R_{t-1}) \edm}
+  \item<+-> Learning gain process:
+  \uncover<+->{\bdm g_t^{-1} = \left\{ \begin{array}{cl} \ds g_{t-1}^{-1} + 1 & \ds \mbox{     if  } \frac{1}{J} \sum_{j=1}^{J} \frac{1}{n} \sum_{v=1}^{n} \left| x_{t-j}(v) - \hat{G}_{t-j}^*(v) x_{t-j-1}^* \right| < \nu_t \\
+\ds g^{-1} & \ds \mbox{     otherwise} \end{array} \right\} \edm}
+  \uncover<+->{\bdm \nu_t = \frac{1}{t-1} \sum_{j=1}^{t-1} \frac{1}{n} \sum_{v=1}^{n} \left| x_{t-j}(v) - \hat{G}_{t-j}^*(v) x_{t-j-1}^* \right| \edm}
+
+  \ei
+}
+
+\frame {
+  \ft{Volatility Switching}
+  \bi
+  \item<+-> Variances of natural rate, cost push, and monetary policy shocks switching according to a Markov chain.
+  \uncover<+->{\bdm Var\left[ \epsilon_t(s_t) \right] = \left\{
+ \begin{array}{c} \left[ \begin{array}{ccc} \sigma_{n,L}^2 & 0 & 0 \\ 0 & \sigma_{u,L}^2 & 0 \\ 0 & 0 & \sigma_{r,L}^2 \end{array} \right], \mbox{       if $s_t=L$} \\ 
+\left[ \begin{array}{ccc} \sigma_{n,H}^2 & 0 & 0 \\ 0 & \sigma_{u,H}^2 & 0 \\ 0 & 0 & \sigma_{r,H}^2 \end{array} \right], \mbox{       if $s_t=H$} 
+\end{array} \right\} \edm}
+  \item<+-> $\sigma_{n,H}^2 \ge \sigma_{n,L}^2,~~ \sigma_{u,H}^2 \ge \sigma_{u,L}^2,~~ \sigma_{r,H}^2 \ge \sigma_{r,L}^2$
+  \item<+-> Transition probabilities:\\ $P(s_t=H | s_{t-1}=H) = p_H$, $P(s_t=L | s_{t-1}=L) = p_L$
+  \ei
+}
+
+\frame {
+  \ft{Estimation Procedure}
+  \bi
+  \item<+-> Maximum Likelihood
+  \item<+-> Data: output gap, CPI inflation rate, federal funds rate.
+  \item<+-> Pre-sample period: 1954:Q3 - 1959:Q4.~~Sample period: 1960:Q1 - 2008:Q1.
+  \item<+-> Expectations are initialized to pre-sample VAR(1) results.
+  \item<+-> Calibrate: discount factor $\beta=0.9925$.
+  \ei
+}
+
+\frame {
+  \ft{Parameter Estimates}
+  \tiny
+  \begin{center}
+    \begin{tabular}{cl|l|l|l}\hline
+ & Parameter & Rational Expectations & Dynamic Gain & Constant Gain \\ \hline
+$\eta$ & Habit Formation & 0.3643 (0.0478) & 0.2580 (0.0308) & 0.3659 (0.0288) \\ 
+$\sigma$ & IES & 0.0073 (0.0154) & 0.2560 (0.1171) & 0.1824 (0.1140) \\ 
+$\mu$ & Elas. Labor & 0.0000 (40.9507) & 0.3219 (2.2075) & 0.0001 (5.0920) \\ 
+$\kappa$ & Phillips Coefficient & 0.0011 (0.0186) & 0.0237 (0.0256) & 0.0054 (0.0146) \\ 
+$\gamma$ & Price Indexation & 0.8945 (0.0330) & 0.9849 (0.1926) & 0.9990 (0.0004) \\ 
+$\rho_r$ & MP Persistence & 0.9355 (0.0289) & 0.9234 (0.0084) & 0.9196 (0.0092) \\ 
+$\psi_y$ & MP Output & 0.2507 (0.0498) & 0.1878 (0.0367) & 0.2758 (0.0425) \\ 
+$\psi_{\pi}$ & MP Inflation & 1.9577 (0.2591) & 1.7363 (0.1687) & 1.6354 (0.1189) \\ 
+$\rho_{n}$ & Nat. Rate Pers.& 0.8705 (0.0353) & 0.7484 (0.0267) & 0.6936 (0.0272) \\ 
+$\rho_{u}$ & Cost Push Pers.& 0.0000 (0.0000) & 0.0062 (0.0376) & 0.0031 (0.0085) \\ 
+$\pi_{*}$ & SS Inflation & 3.5446 (0.2808) & 4.4419 (0.2220) & 5.3272 (0.2825) \\ 
+\hl{4}
+$\sigma_{n,L}$ & Nat. Rate (Low)& 0.1768 (0.3720) & 0.0454 (0.0217) & 0.0931 (0.0572) \\ 
+\hl{5}
+$\sigma_{u,L}$ & Cost Push (Low)& 0.0023 (0.0001) & 0.0045 (0.0004) & 0.0042 (0.0001) \\ 
+\hl{6}
+$\sigma_{r,L}$ & MP Shock (Low)& 0.0013 (0.0001) & 0.0012 (0.0000) & 0.0012 (0.0000) \\ 
+\hl{4}
+$\sigma_{n,H}$ & Nat. Rate (High)& 0.4295 (0.9056) & 0.0966 (0.0485) & 0.1794 (0.1144) \\ 
+\hl{5}
+$\sigma_{u,H}$ & Cost Push (High)& 0.0044 (0.0004) & 0.0092 (0.0010) & 0.0085 (0.0005) \\ 
+\hl{6}
+$\sigma_{r,H}$ & MP Shock (High)& 0.0070 (0.0005) & 0.0064 (0.0003) & 0.0056 (0.0002) \\ 
+\hl{3}
+$p_{L}$ & P(Remain Low) & 0.9609 (0.0224) & 0.9724 (0.0097) & 0.9780 (0.0109) \\ 
+\hl{3}
+$p_{H}$ & P(Remain High) & 0.8099 (0.0578) & 0.8924 (0.0264) & 0.9412 (0.0159) \\ 
+\hl{2}
+$g$ & Learning Gain & -- & 0.0045 (0.0007) & 0.0000 (0.0018) \\ \hline 
+\end{tabular}
+\end{center}
+\normalsize
+\only<1>{\vspace*{1.06pc}}
+\only<2>{\textcolor{mycolor}{Expectations are not adaptive.}}
+\only<3>{\textcolor{mycolor}{Regimes are highly persistent.}}
+\only<4>{\textcolor{mycolor}{Learning predicts smaller variances of the natural rate shock.}}
+\only<5-6>{\textcolor{mycolor}{Variances of cost push and monetary shock are similar.}}
+
+}
+
+\frame
+{
+  \ft{Regime-Switching Volatility}
+  \begin{center}
+    Rational Expectations\\
+    Probability Economy is in the Volatile Regime\\
+    \includegraphics[scale=0.4]{results_re/states_sm.png} \\
+    Expected 7.77 volatile years
+  \end{center}
+}
+
+\frame
+{
+  \ft{Regime-Switching Volatility}
+  \begin{center}
+    Constant Gain Learning\\
+    Probability Economy is in the Volatile Regime\\
+    \includegraphics[scale=0.4]{results_cg_wlsinit/states_sm.png} \\
+    Expected 12.26 volatile years
+  \end{center}
+}
+
+\frame
+{
+  \ft{Regime-Switching Volatility}
+  \begin{center}
+    Dynamic Gain Learning\\
+    Probability Economy is in the Volatile Regime\\
+    and Evolution of the Learning Gain\\
+    \includegraphics[scale=0.4]{results_dg8_wlsinit/states_sm.png} \\
+    Expected 9.17 volatile years
+  \end{center}
+}
+
+%% \subsection{Forecast Errors}
+\frame {
+  \ft{Forecast Errors: Output Gap}
+  \begin{tabular}{ccc}
+  Rational Exp. (1.0) & Constant Gain (0.86) & Dynamic Gain (0.82) \\
+  \includegraphics[scale=0.18]{../badluck/results_re/output_err.png} &
+  \includegraphics[scale=0.18]{../badluck/results_cg_wlsinit/output_err.png}  &
+  \includegraphics[scale=0.18]{../badluck/results_dg8_wlsinit/output_err.png} \\
+  \end{tabular}
+
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors
+  \item Most volatile during recessions in 1970s, early 1980s
+  \ei
+}
+
+\frame {
+  \ft{Forecast Errors: Inflation}
+  \begin{tabular}{ccc}
+  Rational Exp. (1.0) & Constant Gain (0.85) & Dynamic Gain (0.80) \\
+  \includegraphics[scale=0.18]{../badluck/results_re/inflation_err.png} &
+  \includegraphics[scale=0.18]{../badluck/results_cg_wlsinit/inflation_err.png}  &
+  \includegraphics[scale=0.18]{../badluck/results_dg8_wlsinit/inflation_err.png} \\
+  \end{tabular}
+
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item All models made similar errors.
+  \item Most volatile during recessions in 1970s, early 1980s.
+  \ei
+}
+
+\frame {
+  \ft{Forecast Errors: Federal Funds Rate}
+  \begin{tabular}{ccc}
+  Rational Exp. (1.0) & Constant Gain (0.99) & Dynamic Gain (0.99) \\
+  \includegraphics[scale=0.18]{../badluck/results_re/fedfunds_err.png} &
+  \includegraphics[scale=0.18]{../badluck/results_cg_wlsinit/fedfunds_err.png}  &
+  \includegraphics[scale=0.18]{../badluck/results_dg8_wlsinit/fedfunds_err.png} \\
+  \end{tabular}
+
+  \bi
+  \item (Correlation with Rational Expectations)
+  \item Essentially identical errors.
+  \item Do not explain change in policy in early 1980s.
+  \ei
+}
+
+\frame
+{
+  \ft{Conclusions}
+  \bi
+  \item<+-> When allowing for regime-switching volatility, there is little evidence of adaptive expectations.
+  \item<+-> Constant gain learning and dynamic gain learning both produce less volatility for the natural rate shock.
+  \item<+-> Learning frameworks actually deliver a higher prediction for the time spent in volatile regime.
+  \item<+-> All models make similar forecast errors at similar points in sample.
+  \item<+-> Not presented: the rational expectations model actually yields smallest in-sample MSE.
+  \ei
+}
+
+\end{document}
+
